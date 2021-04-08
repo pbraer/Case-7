@@ -15,3 +15,9 @@ with codecs.open('input.txt', 'r', encoding='utf-8') as f:
                 text += s + line
 words = text.split(' ')
 print(words)
+
+words_2 = []
+for word in words:
+    if word not in words_2:
+        words_2.append(word)
+print(words_2)
