@@ -21,3 +21,5 @@ for word in words:
     if word not in words_2:
         words_2.append(word)
 print(words_2)
+d = dict.fromkeys([words_2])
+print(d)
