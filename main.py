@@ -1,3 +1,14 @@
+# Case-study #7
+# Developers:   Braer P. (70%),
+#               Kokorina D. (50%),
+#               Novoselov V. (35%)
+
+print("""Case-study Генератор текста
+Разработчики:
+Браер П.С., Кокорина Д.Е., Новоселов В.В.
+
+""")
+
 import codecs
 text = ''
 with codecs.open('input.txt', 'r', encoding='utf-8') as f:
