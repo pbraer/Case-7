@@ -51,6 +51,7 @@ for word in start_words_var:
 
 
 import random
+i = 0
 n = random.randint(3, 18)
 print(random.choice(dict_start_words))
 while i < n:
