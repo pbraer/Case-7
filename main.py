@@ -48,7 +48,7 @@ for word in start_words_var:
         dict_start_words[word] = words_after
     position = -1
     words_after = []
-print(dict_start_words)
+
 
 import random
 n = random.randint(3, 18)
@@ -76,7 +76,7 @@ for word in middle_words_var:
         dict_middle_words[word] = words_after_m
     position_m = -1
     words_after_m = []
-print(dict_middle_words)
+
 
 import random
 n = random.randint(3, 18)
