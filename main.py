@@ -1,3 +1,7 @@
+# Case-study #7
+# Developers: Braer P. (%),
+# Kokorina D. (%),
+# Novoselov V. (%)
 import codecs
 text = ''
 with codecs.open('input.txt', 'r', encoding='utf-8') as f:
@@ -46,6 +50,14 @@ for word in start_words_var:
     words_after = []
 print(dict_start_words)
 
+import random
+n = random.randint(3, 18)
+print(random.choice(dict_start_words))
+while i < n:
+    print(random.choice(dict_start_words))
+    i = i+1
+print(random.choice(dict_start_words))
+
 
 middle_words_var = []
 for word in middle_words:
@@ -66,6 +78,13 @@ for word in middle_words_var:
     words_after_m = []
 print(dict_middle_words)
 
+import random
+n = random.randint(3, 18)
+print(random.choice(dict_middle_words))
+while i < n:
+    print(random.choice(dict_middle_words))
+    i = i+1
+print(random.choice(dict_middle_words))
 
 finish_words_var = []
 for word in finish_words:
