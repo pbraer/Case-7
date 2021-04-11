@@ -1,7 +1,14 @@
 # Case-study #7
-# Developers: Braer P. (%),
-# Kokorina D. (%),
-# Novoselov V. (%)
+# Developers:   Braer P. (70%),
+#               Kokorina D. (50%),
+#               Novoselov V. (35%)
+
+print("""Case-study Генератор текста
+Разработчики:
+Браер П.С., Кокорина Д.Е., Новоселов В.В.
+
+""")
+
 import codecs
 text = ''
 with codecs.open('input.txt', 'r', encoding='utf-8') as f:
@@ -49,43 +56,23 @@ for word in start_words_var:
     position = -1
     words_after = []
 
-
-import random
-i = 0
-n = random.randint(3, 18)
-print(random.choice(dict_start_words))
-while i < n:
-    print(random.choice(dict_start_words))
-    i = i+1
-print(random.choice(dict_start_words))
-
-
 middle_words_var = []
 for word in middle_words:
     if word not in middle_words_var:
         middle_words_var.append(word)
 
 dict_middle_words = {}
-words_after_m = []
-position_m = -1
+words_after = []
+position = -1
 for word in middle_words_var:
     for all_word in words:
-        position_m += 1
-        if word == all_word and position_m != len(words) - 1:
-            words_after_m.append(words[position_m + 1])
+        position += 1
+        if word == all_word and position != len(words) - 1:
+            words_after.append(words[position + 1])
     if word not in dict_middle_words:
-        dict_middle_words[word] = words_after_m
-    position_m = -1
-    words_after_m = []
-
-
-import random
-n = random.randint(3, 18)
-print(random.choice(dict_middle_words))
-while i < n:
-    print(random.choice(dict_middle_words))
-    i = i+1
-print(random.choice(dict_middle_words))
+        dict_middle_words[word] = words_after
+    position = -1
+    words_after = []
 
 finish_words_var = []
 for word in finish_words:
@@ -93,15 +80,54 @@ for word in finish_words:
         finish_words_var.append(word)
 
 dict_finish_words = {}
-words_after_f = []
-position_f = -1
+words_after = []
+position = -1
 for word in finish_words_var:
     for all_word in words:
-        position_f += 1
-        if word == all_word and position_f != len(words) - 1:
-            words_after_f.append(words[position_f + 1])
+        position += 1
+        if word == all_word and position != len(words) - 1:
+            words_after.append(words[position + 1])
     if word not in dict_finish_words:
-        dict_finish_words[word] = words_after_f
-    position_f = -1
-    words_after_f = []
-print(dict_finish_words)
+        dict_finish_words[word] = words_after
+    position = -1
+    words_after = []
+
+import random as r
+
+
+amount_sentence = int(input('Количество генерируемых предложений: '))
+amount_sentence += 1
+sent = 1
+
+start_len = len(start_words_var)-1
+middle_len = len(middle_words_var)
+finish_len = len(finish_words_var) - 1
+
+while sent != amount_sentence:
+    words_amount = r.randint(2, 18)
+    words_amount += 1
+    start_word = r.randint(0, start_len)
+    start_1 = start_words_var[start_word]
+    start_mean = r.randint(0, len(dict_start_words[start_1])-1)
+    start_w_2 = dict_start_words[start_1]
+    start_2 = start_w_2[start_mean]
+    print(start_1 + ' ' + start_2, sep='', end=' ')
+    wrd = 1
+    st = ' '
+    while wrd != words_amount and st[len(st) - 1] != '.':
+        middle_word = r.randint(0, middle_len-1)
+        middle_1 = middle_words_var[middle_word]
+        middle_w_2 = dict_middle_words[middle_1]
+        middle_mean = r.randint(0, len(middle_w_2)-1)
+        middle_2 = middle_w_2[middle_mean]
+        st += middle_1.lower() + ' ' + middle_2.lower() + ' '
+        wrd += 1
+
+    st = st[1:len(st)-1]
+    if st[len(st) - 1] == ' ':
+        st = st[:len(st)-1]
+    if st[len(st) - 1] == ',':
+        st = st[:len(st)-1]
+    print(st, sep='', end='. ')
+
+    sent += 1
